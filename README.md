@@ -1,18 +1,50 @@
-## Getting Started
+ Smart Student Record Management System (Java)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Project Overview
+The **Smart Student Record Management System** is a **console-based Java application** designed to manage student records efficiently.  
+It implements **role-based access control** to differentiate between **Faculty** and **Student** users.
 
-## Folder Structure
+The system allows faculty members to manage student records, while students are restricted to viewing and searching records only.
 
-The workspace contains two folders by default, where:
+This project demonstrates the use of **Object-Oriented Programming (OOP)** concepts and **basic access control mechanisms** in Java.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## 🎯 Objectives
+- To manage student academic records digitally
+- To implement role-based access control
+- To practice Java OOP concepts
+- To build a menu-driven console application
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 👥 User Roles & Access Control
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### Faculty
+Faculty members can:
+- Add new student records
+- View all student records
+- Search student by ID
+- Update student details
+- Delete student records
 
-## Dependency Management
+### Student
+Students can:
+- View all student records
+- Search student by ID
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Students **cannot** add, update, or delete records.
+
+## 🔐 Login Credentials (Default)
+
+### Faculty Login
+- Username: `faculty`
+- Password: `faculty123`
+
+### Student Login
+- Username: `student`
+- Password: `student123`
+
+## 🛠 Technologies Used
+- Java (JDK 8 or above)
+- Java Collections Framework (ArrayList)
+- Scanner class for user input
+- VS Code / Command Prompt
+
+No external libraries or frameworks are used.
