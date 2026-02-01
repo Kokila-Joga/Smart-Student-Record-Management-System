@@ -6,6 +6,12 @@ public class StudentManagementSystem {
     static ArrayList<Student> students = new ArrayList<Student>();
     static Scanner sc = new Scanner(System.in);
 
+    static final String FACULTY_USER = "faculty";
+    static final String FACULTY_PASS = "faculty123";
+
+    static final String STUDENT_USER = "student";
+    static final String STUDENT_PASS = "student123";
+
     public static void addStudent() {
         System.out.print("Enter Student ID: ");
         int id = sc.nextInt();
@@ -47,7 +53,7 @@ public class StudentManagementSystem {
     }
 
     public static void searchStudent() {
-        System.out.print("Enter Student ID to search: ");
+        System.out.print("Enter Student ID: ");
         int id = sc.nextInt();
 
         for (Student s : students) {
@@ -61,7 +67,7 @@ public class StudentManagementSystem {
     }
 
     public static void updateStudent() {
-        System.out.print("Enter Student ID to update: ");
+        System.out.print("Enter Student ID: ");
         int id = sc.nextInt();
 
         for (Student s : students) {
@@ -81,7 +87,7 @@ public class StudentManagementSystem {
                 System.out.print("Enter New Marks: ");
                 s.setMarks(sc.nextDouble());
 
-                System.out.println("Student record updated");
+                System.out.println("Student updated successfully");
                 return;
             }
         }
@@ -90,13 +96,13 @@ public class StudentManagementSystem {
     }
 
     public static void deleteStudent() {
-        System.out.print("Enter Student ID to delete: ");
+        System.out.print("Enter Student ID: ");
         int id = sc.nextInt();
 
         for (Student s : students) {
             if (s.getId() == id) {
                 students.remove(s);
-                System.out.println("Student record deleted");
+                System.out.println("Student deleted successfully");
                 return;
             }
         }
@@ -104,41 +110,69 @@ public class StudentManagementSystem {
         System.out.println("Student not found");
     }
 
-    public static void main(String[] args) {
-
+    public static void facultyMenu() {
         while (true) {
-            System.out.println("\nSmart Student Record Management System");
+            System.out.println("\nFaculty Menu");
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
             System.out.println("3. Search Student");
             System.out.println("4. Update Student");
             System.out.println("5. Delete Student");
-            System.out.println("6. Exit");
+            System.out.println("6. Logout");
 
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1:
-                    addStudent();
-                    break;
-                case 2:
-                    viewStudents();
-                    break;
-                case 3:
-                    searchStudent();
-                    break;
-                case 4:
-                    updateStudent();
-                    break;
-                case 5:
-                    deleteStudent();
-                    break;
-                case 6:
-                    System.out.println("Exiting program");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice");
+                case 1: addStudent(); break;
+                case 2: viewStudents(); break;
+                case 3: searchStudent(); break;
+                case 4: updateStudent(); break;
+                case 5: deleteStudent(); break;
+                case 6: return;
+                default: System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    public static void studentMenu() {
+        while (true) {
+            System.out.println("\nStudent Menu");
+            System.out.println("1. View Students");
+            System.out.println("2. Search Student");
+            System.out.println("3. Logout");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1: viewStudents(); break;
+                case 2: searchStudent(); break;
+                case 3: return;
+                default: System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        while (true) {
+            System.out.println("\nLogin");
+            System.out.print("Username: ");
+            String user = sc.next();
+            System.out.print("Password: ");
+            String pass = sc.next();
+
+            if (user.equals(FACULTY_USER) && pass.equals(FACULTY_PASS)) {
+                System.out.println("Faculty login successful");
+                facultyMenu();
+            } 
+            else if (user.equals(STUDENT_USER) && pass.equals(STUDENT_PASS)) {
+                System.out.println("Student login successful");
+                studentMenu();
+            } 
+            else {
+                System.out.println("Invalid credentials");
             }
         }
     }
